@@ -11,4 +11,6 @@
 |
 */
 
-Route::redirect('/', 'auth/login');
+Route::redirect('/', 'contact-form');
+Route::get('contact-form', 'ContactFormController@create')->name('contact-form.create');
+Route::post('contact-form', 'ContactFormController@store')->name('contact-form.store');
