@@ -3,6 +3,7 @@
 namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Support\Str;
 
 class DomainId implements Rule
 {
@@ -25,7 +26,7 @@ class DomainId implements Rule
      */
     public function passes($attribute, $value)
     {
-        return substr($value, -3) == '.id';
+        return Str::endsWith($value, '.id');
     }
 
     /**
