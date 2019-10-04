@@ -28,6 +28,8 @@ class Store extends FormRequest
         return [
             'name' => ['required', new MinimumWords()],
             'email' => ['required', 'email', new DomainId()],
+            'phone' => ['numeric'],
+            'kategori' => [],
             'message' => ['required', 'min:20'],
         ];
     }
