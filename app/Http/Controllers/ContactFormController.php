@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ContactFormSubmitted;
 use App\Http\Requests\ContactForm\Store;
 use App\Models\ContactForm;
 use Illuminate\Http\Request;
@@ -22,8 +23,12 @@ class ContactFormController extends Controller
     {
         $insert = ContactForm::create($request->validated());
 
-        return ($insert) ?
-            redirect()->back()->withSuccess('Pesan telah diterima dan menunggu tindak lanjut.') :
-            redirect()->back()->withError('Maaf, Gagal Menyimpan');
+        if ($insert) {
+            event(new ContactFormSubmitted($insert));
+            return redirect()->back()->withSuccess('Pesan telah diterima dan menunggu tindak lanjut.') :
+        } else {
+            return redirect()->back()->withError('Maaf, Gagal Menyimpan');
+        }
+
     }
 }
