@@ -14,3 +14,7 @@
 Route::redirect('/', 'contact-form');
 Route::get('contact-form', 'ContactFormController@create')->name('contact-form.create');
 Route::post('contact-form', 'ContactFormController@store')->name('contact-form.store');
+
+Route::prefix('admin')->namespace('Admin')->as('admin.')->group(function () {
+    Route::get('contact-form', 'ContactFormController@index')->name('contact-form.index');
+});
