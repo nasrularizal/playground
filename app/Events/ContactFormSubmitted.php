@@ -15,7 +15,7 @@ class ContactFormSubmitted
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    protected $contactForm;
+    public $contactForm;
 
     /**
      * Create a new event instance.

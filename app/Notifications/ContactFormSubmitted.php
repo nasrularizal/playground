@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\Models\ContactForm;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -11,14 +12,16 @@ class ContactFormSubmitted extends Notification
 {
     use Queueable;
 
+    protected $contactForm;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(ContactForm $contactForm)
     {
-        //
+        $this->contactForm = $contactForm;
     }
 
     /**

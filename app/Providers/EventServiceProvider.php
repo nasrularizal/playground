@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Events\ContactFormSubmitted;
 use App\Listeners\SendContactFormNotification;
+use App\Listeners\SendUserContactFormNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
 class EventServiceProvider extends ServiceProvider
@@ -15,7 +16,8 @@ class EventServiceProvider extends ServiceProvider
      */
     protected $listen = [
         ContactFormSubmitted::class => [
-            SendContactFormNotification::class
+            SendContactFormNotification::class,
+            SendUserContactFormNotification::class
         ],
     ];
 

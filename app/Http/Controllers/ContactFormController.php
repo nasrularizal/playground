@@ -25,7 +25,7 @@ class ContactFormController extends Controller
 
         if ($insert) {
             event(new ContactFormSubmitted($insert));
-            return redirect()->back()->withSuccess('Pesan telah diterima dan menunggu tindak lanjut.') :
+            return redirect()->back()->withSuccess('Pesan telah diterima dan menunggu tindak lanjut.');
         } else {
             return redirect()->back()->withError('Maaf, Gagal Menyimpan');
         }

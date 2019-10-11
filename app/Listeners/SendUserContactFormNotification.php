@@ -36,8 +36,8 @@ class SendUserContactFormNotification
     public function fillUser($event)
     {
         return [
-            'name' => $event->name,
-            'email' => $event->email,
+            'name' => $event->contactForm->name,
+            'email' => $event->contactForm->email,
         ];
     }
 }
